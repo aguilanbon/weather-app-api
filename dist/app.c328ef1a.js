@@ -5308,6 +5308,63 @@ require("regenerator-runtime/runtime");
 var _axios = _interopRequireDefault(require("axios"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+var input = document.querySelector('input');
+var button = document.querySelector('button');
+var locationContainer = document.getElementById('location'); //ac5bfa3ccccf4780806122315221405
+
+var fetchWeather = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(loc) {
+    var response, data, currentData, currentLocation;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return _axios.default.get("http://api.weatherapi.com/v1/current.json?key=ac5bfa3ccccf4780806122315221405&q=".concat(loc, "&aqi=no"));
+
+          case 2:
+            response = _context.sent;
+            _context.next = 5;
+            return response.data;
+
+          case 5:
+            data = _context.sent;
+            _context.next = 8;
+            return data.current;
+
+          case 8:
+            currentData = _context.sent;
+            _context.next = 11;
+            return data.location;
+
+          case 11:
+            currentLocation = _context.sent;
+            console.log(currentData);
+            console.log(currentLocation);
+            locationContainer.innerHTML = currentLocation.name + ' ' + currentLocation.country;
+
+          case 15:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function fetchWeather(_x) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+button.addEventListener('click', function (e) {
+  e.preventDefault();
+  fetchWeather(input.value);
+});
 },{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","axios":"node_modules/axios/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -5336,7 +5393,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55839" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56762" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

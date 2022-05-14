@@ -1,9 +1,24 @@
 import 'regenerator-runtime/runtime';
 import axios from 'axios'
 
-// const fetchWeather = async () => {
-//     let response = await axios.get('https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily&appid=013379e640835e59f4a4b5b4b08e6b78')
-//     console.log(response.data);
-// }
 
-// fetchWeather()
+const input = document.querySelector('input')
+const button = document.querySelector('button')
+const locationContainer = document.getElementById('location')
+//ac5bfa3ccccf4780806122315221405
+
+const fetchWeather = async (loc) => {
+    let response = await axios.get(`http://api.weatherapi.com/v1/current.json?key=ac5bfa3ccccf4780806122315221405&q=${loc}&aqi=no`)
+    let data = await response.data
+    let currentData = await data.current
+    let currentLocation = await data.location
+    console.log(currentData);
+    console.log(currentLocation);
+    locationContainer.innerHTML = currentLocation.name + ' ' + currentLocation.country
+}
+
+
+button.addEventListener('click', (e) => {
+    e.preventDefault()
+    fetchWeather(input.value)
+})
