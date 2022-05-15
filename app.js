@@ -7,6 +7,8 @@ const button = document.querySelector('button')
 const inText = document.querySelector('.in')
 const weatherCondition = document.getElementById('weather-condition')
 const temp = document.getElementById('temp')
+const ul = document.querySelector('ul')
+const autocomplete = document.querySelector('.autocomplete-container')
 
 const locationCity = document.getElementById('weather-location__city')
 const locationCountry = document.getElementById('weather-location__country')
@@ -49,18 +51,34 @@ const fetchWeather = async (loc) => {
 const fetchWeatherAutoComplete = async (loc) => {
     let response = await axios.get(`http://api.weatherapi.com/v1/search.json?key=ac5bfa3ccccf4780806122315221405&q=${loc}`)
     let data = await response.data
-    console.log(data);
+
+    
+    data.forEach(city => {
+            if(ul.children.length <= 8) {
+                const li = document.createElement('li')
+                console.log(city);
+                const searchCity = document.createElement('p')
+                searchCity.innerText = city.name
+                li.appendChild(searchCity)
+                ul.appendChild(li)
+                ul.classList.add('visible')
+            }
+        }) 
 }
 
 
 
 button.addEventListener('click', (e) => {
     e.preventDefault()
-    fetchWeather(input.value)
+    if(ul.children.length >= 1) {
+        fetchWeather(input.value)
+        ul.innerHTML = ""
+    }
 })
 
 
-input.addEventListener('change', (e) => {
+input.addEventListener('input', async (e) => {
     e.preventDefault()
-    fetchWeatherAutoComplete(e.target.value)
+    ul.innerHTML = ""
+    await fetchWeatherAutoComplete(e.target.value)
 })

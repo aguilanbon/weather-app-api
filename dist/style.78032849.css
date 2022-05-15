@@ -56,6 +56,28 @@ p, h1, h2, h3 {
           flex-direction: column;
 }
 
+.container .weather-container .search-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+}
+
+.container .weather-container .search-container .autocomplete-container {
+  position: absolute;
+  margin-top: 3em;
+  width: 100%;
+  z-index: 999;
+}
+
+.container .weather-container .search-container .autocomplete-container ul {
+  background-color: aquamarine;
+}
+
 .container .weather-container .weather-input {
   display: -webkit-box;
   display: -ms-flexbox;

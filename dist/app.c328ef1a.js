@@ -5318,6 +5318,8 @@ var button = document.querySelector('button');
 var inText = document.querySelector('.in');
 var weatherCondition = document.getElementById('weather-condition');
 var temp = document.getElementById('temp');
+var ul = document.querySelector('ul');
+var autocomplete = document.querySelector('.autocomplete-container');
 var locationCity = document.getElementById('weather-location__city');
 var locationCountry = document.getElementById('weather-location__country'); //ac5bfa3ccccf4780806122315221405
 
@@ -5405,7 +5407,17 @@ var fetchWeatherAutoComplete = /*#__PURE__*/function () {
 
           case 5:
             data = _context2.sent;
-            console.log(data);
+            data.forEach(function (city) {
+              if (ul.children.length <= 8) {
+                var li = document.createElement('li');
+                console.log(city);
+                var searchCity = document.createElement('p');
+                searchCity.innerText = city.name;
+                li.appendChild(searchCity);
+                ul.appendChild(li);
+                ul.classList.add('visible');
+              }
+            });
 
           case 7:
           case "end":
@@ -5422,12 +5434,35 @@ var fetchWeatherAutoComplete = /*#__PURE__*/function () {
 
 button.addEventListener('click', function (e) {
   e.preventDefault();
-  fetchWeather(input.value);
+
+  if (ul.children.length >= 1) {
+    fetchWeather(input.value);
+    ul.innerHTML = "";
+  }
 });
-input.addEventListener('change', function (e) {
-  e.preventDefault();
-  fetchWeatherAutoComplete(e.target.value);
-});
+input.addEventListener('input', /*#__PURE__*/function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(e) {
+    return regeneratorRuntime.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            e.preventDefault();
+            ul.innerHTML = "";
+            _context3.next = 4;
+            return fetchWeatherAutoComplete(e.target.value);
+
+          case 4:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
+
+  return function (_x3) {
+    return _ref3.apply(this, arguments);
+  };
+}());
 },{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","axios":"node_modules/axios/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
