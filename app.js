@@ -14,21 +14,23 @@ const locationCountry = document.getElementById('weather-location__country')
 
 const fetchWeather = async (loc) => {
     try {
+
         let response = await axios.get(`http://api.weatherapi.com/v1/current.json?key=ac5bfa3ccccf4780806122315221405&q=${loc}&aqi=no`)
         let data = await response.data
         let currentData = await data.current
         let currentLocation = await data.location
         let condition = currentData.condition
-        console.log(currentData);
-        console.log(currentLocation);
-        temp.innerHTML = `${currentData.temp_c}&#176`
-        weatherCondition.innerText = condition.text
-        inText.classList.add('visible')
-        document.getElementById('weather-icon').src = condition.icon
-        locationCity.innerHTML = `${currentLocation.name},`
-        locationCountry.innerHTML = currentLocation.country
+
+            temp.innerHTML = `${currentData.temp_c}&#176`
+            weatherCondition.innerText = condition.text
+            inText.classList.add('visible')
+            document.getElementById('weather-icon').src = condition.icon
+            locationCity.innerHTML = `${currentLocation.name},`
+            locationCountry.innerHTML = currentLocation.country
+
+            input.value = ''
+
     } catch (error) {
-        console.log(error.response.status);
         if(error.response.status) {
             locationCity.innerHTML = "404"
             locationCountry.innerHTML = "No location found..."
@@ -38,6 +40,7 @@ const fetchWeather = async (loc) => {
             inText.classList.remove('visible')
             inText.classList.add('hidden')
             document.getElementById('weather-icon').src = ''
+            input.value = ''
         }
     }
    

@@ -5350,21 +5350,19 @@ var fetchWeather = /*#__PURE__*/function () {
           case 12:
             currentLocation = _context.sent;
             condition = currentData.condition;
-            console.log(currentData);
-            console.log(currentLocation);
             temp.innerHTML = "".concat(currentData.temp_c, "&#176");
             weatherCondition.innerText = condition.text;
             inText.classList.add('visible');
             document.getElementById('weather-icon').src = condition.icon;
             locationCity.innerHTML = "".concat(currentLocation.name, ",");
             locationCountry.innerHTML = currentLocation.country;
-            _context.next = 28;
+            input.value = '';
+            _context.next = 26;
             break;
 
-          case 24:
-            _context.prev = 24;
+          case 23:
+            _context.prev = 23;
             _context.t0 = _context["catch"](0);
-            console.log(_context.t0.response.status);
 
             if (_context.t0.response.status) {
               locationCity.innerHTML = "404";
@@ -5374,14 +5372,15 @@ var fetchWeather = /*#__PURE__*/function () {
               inText.classList.remove('visible');
               inText.classList.add('hidden');
               document.getElementById('weather-icon').src = '';
+              input.value = '';
             }
 
-          case 28:
+          case 26:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 24]]);
+    }, _callee, null, [[0, 23]]);
   }));
 
   return function fetchWeather(_x) {
