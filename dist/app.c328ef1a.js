@@ -5506,7 +5506,14 @@ input.addEventListener('input', /*#__PURE__*/function () {
   return function (_x3) {
     return _ref3.apply(this, arguments);
   };
-}()); // document.querySelector('.container').addEventListener('click', () => {
+}());
+document.addEventListener('click', function (e) {
+  var isInside = input.contains(e.target);
+
+  if (!isInside) {
+    ul.innerHTML = '';
+  }
+}); // document.querySelector('.container').addEventListener('click', () => {
 //     ul.innerHTML = ""
 // })
 },{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","axios":"node_modules/axios/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {

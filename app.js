@@ -140,6 +140,14 @@ input.addEventListener('input', async (e) => {
     await fetchWeatherAutoComplete(e.target.value)
 })
 
+document.addEventListener('click', (e) => {
+    const isInside = input.contains(e.target)
+
+    if(!isInside) {
+        ul.innerHTML = ''
+    }
+})
+
 // document.querySelector('.container').addEventListener('click', () => {
 //     ul.innerHTML = ""
 // })
