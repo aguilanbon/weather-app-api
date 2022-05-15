@@ -1,12 +1,14 @@
 {
   "name": "weather-app",
   "version": "1.0.0",
+  "homepage": "https://aguilanbon.github.io/weather-app-api/",
   "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "deploy": "gh-pages -b deployment -d dist"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +16,7 @@
   "dependencies": {
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0-beta1",
+    "gh-pages": "^4.0.0",
     "parcel-bundler": "^1.12.5"
   }
 }
