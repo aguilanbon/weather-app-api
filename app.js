@@ -45,8 +45,13 @@ const fetchWeather = async (loc) => {
                 const forecastContainer = document.createElement('div')
                 forecastContainer.classList.add('forecast-container')
 
+                const topContainer = document.createElement('div')
+                topContainer.classList.add('top-container')
+
                 const dateContainer = document.createElement('div')
                 dateContainer.classList.add('date-container')
+
+
 
                 const h1 = document.createElement('h1')
                     h1.innerHTML = `${condition.avgtemp_c}&#176`
@@ -60,9 +65,9 @@ const fetchWeather = async (loc) => {
                     icon.src = data.day.condition.icon
                     foreCastCondition.appendChild(icon)
 
-                const forecastDate = document.createElement('p')
-                    forecastDate.innerHTML = data.date
+                topContainer.innerHTML = data.date
 
+                forecastContainer.appendChild(topContainer)
                 forecastContainer.appendChild(tempContainer)
                 forecastContainer.appendChild(foreCastCondition)
                 tempForecast.appendChild(forecastContainer)

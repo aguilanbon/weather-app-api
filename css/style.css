@@ -12,7 +12,10 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-p, h1, h2, h3 {
+p,
+h1,
+h2,
+h3 {
   margin: 0;
 }
 
@@ -190,23 +193,46 @@ p, h1, h2, h3 {
 }
 
 .container .weather-container .weather-info .weather-forecast .forecast-container {
-  padding: 0 1em;
+  padding: 0 2em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container .weather-container .weather-info .weather-forecast .forecast-container .top-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-size: .8em;
+  opacity: .7;
 }
 
 .container .weather-container .weather-info .weather-forecast .forecast-container .temp-container__forecast {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 1em 0;
 }
 
 .container .weather-container .weather-info .weather-forecast .forecast-container .temp-container__forecast h1 {
-  font-size: 1.4em;
+  font-size: 1.8em;
 }
 
 .container .weather-container .weather-info .weather-forecast .forecast-container .condition-container__forecast {
@@ -220,18 +246,17 @@ p, h1, h2, h3 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  padding-left: 1em;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .container .weather-container .weather-info .weather-forecast .forecast-container .condition-container__forecast h3 {
-  font-size: .7em;
+  font-size: 1em;
 }
 
 .container .weather-container .weather-info .weather-forecast .forecast-container .condition-container__forecast img {
-  width: 2.5em;
+  width: 3em;
 }
 
 .hidden {

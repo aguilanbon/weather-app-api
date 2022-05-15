@@ -15,7 +15,10 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-p, h1, h2, h3 {
+p,
+h1,
+h2,
+h3 {
     margin: 0;
 }
 
@@ -40,7 +43,7 @@ p, h1, h2, h3 {
         display: flex;
         align-items: center;
         flex-direction: column;
-        
+
         .search-container {
             display: flex;
             flex-direction: column;
@@ -100,6 +103,7 @@ p, h1, h2, h3 {
                     display: flex;
                     justify-content: flex-start;
                     padding-right: 1em;
+
                     h1 {
                         font-size: 5rem;
                     }
@@ -136,33 +140,43 @@ p, h1, h2, h3 {
                 margin-top: 3em;
 
                 .forecast-container {
-                    padding: 0 1em;
+                    padding: 0 2em;
                     display: flex;
                     align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+
+                    .top-container {
+                        display: flex;
+                        flex-direction: row;
+                        font-size: .8em;
+                        opacity: .7;
+                    }
 
                     .temp-container__forecast {
                         display: flex;
+                        justify-content: center;
+                        padding: 1em 0;
+
                         h1 {
-                            font-size: 1.4em;
+                            font-size: 1.8em;
                         }
                     }
 
                     .condition-container__forecast {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: flex-start;
-                    padding-left: 1em;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
 
                         h3 {
-                            font-size: .7em;
+                            font-size: 1em;
                         }
 
                         img {
-                            width: 2.5em;
+                            width: 3em;
                         }
                     }
-                    
                 }
             }
         }
@@ -195,7 +209,7 @@ p, h1, h2, h3 {
         justify-content: center;
     }
 
-    
+
     .condition-container__forecast {
         min-width: 50%;
     }

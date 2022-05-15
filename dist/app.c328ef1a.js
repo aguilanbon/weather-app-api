@@ -5373,6 +5373,8 @@ var fetchWeather = /*#__PURE__*/function () {
               foreCastCondition.classList.add('condition-container__forecast');
               var forecastContainer = document.createElement('div');
               forecastContainer.classList.add('forecast-container');
+              var topContainer = document.createElement('div');
+              topContainer.classList.add('top-container');
               var dateContainer = document.createElement('div');
               dateContainer.classList.add('date-container');
               var h1 = document.createElement('h1');
@@ -5384,8 +5386,8 @@ var fetchWeather = /*#__PURE__*/function () {
               var icon = document.createElement('img');
               icon.src = data.day.condition.icon;
               foreCastCondition.appendChild(icon);
-              var forecastDate = document.createElement('p');
-              forecastDate.innerHTML = data.date;
+              topContainer.innerHTML = data.date;
+              forecastContainer.appendChild(topContainer);
               forecastContainer.appendChild(tempContainer);
               forecastContainer.appendChild(foreCastCondition);
               tempForecast.appendChild(forecastContainer);
