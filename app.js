@@ -20,13 +20,13 @@ const locationCountry = document.getElementById('weather-location__country')
 const fetchWeather = async (loc) => {
     try {
 
-        let response = await axios.get(`http://api.weatherapi.com/v1/current.json?key=ac5bfa3ccccf4780806122315221405&q=${loc}&aqi=no`)
+        let response = await axios.get(`https://api.weatherapi.com/v1/current.json?key=ac5bfa3ccccf4780806122315221405&q=${loc}&aqi=no`)
         let data = await response.data
         let currentData = await data.current
         let currentLocation = await data.location
         let condition = currentData.condition
 
-        let responseForecast = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=ac5bfa3ccccf4780806122315221405&q=${loc}&days=3&aqi=no&alerts=no`)
+        let responseForecast = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=ac5bfa3ccccf4780806122315221405&q=${loc}&days=3&aqi=no&alerts=no`)
 
         let forecastData = await responseForecast.data.forecast.forecastday
 
@@ -34,7 +34,6 @@ const fetchWeather = async (loc) => {
 
         forecastData.forEach(data => {
             let condition = data.day
-            console.log(data.date);
 
                 const tempContainer = document.createElement('div')
                 tempContainer.classList.add('temp-container__forecast')
@@ -102,7 +101,7 @@ const fetchWeather = async (loc) => {
 }
 
 const fetchWeatherAutoComplete = async (loc) => {
-    let response = await axios.get(`http://api.weatherapi.com/v1/search.json?key=ac5bfa3ccccf4780806122315221405&q=${loc}`)
+    let response = await axios.get(`https://api.weatherapi.com/v1/search.json?key=ac5bfa3ccccf4780806122315221405&q=${loc}`)
     let data = await response.data
 
     

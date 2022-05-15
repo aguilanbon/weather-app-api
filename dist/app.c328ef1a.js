@@ -5333,7 +5333,7 @@ var fetchWeather = /*#__PURE__*/function () {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return _axios.default.get("http://api.weatherapi.com/v1/current.json?key=ac5bfa3ccccf4780806122315221405&q=".concat(loc, "&aqi=no"));
+            return _axios.default.get("https://api.weatherapi.com/v1/current.json?key=ac5bfa3ccccf4780806122315221405&q=".concat(loc, "&aqi=no"));
 
           case 3:
             response = _context.sent;
@@ -5354,7 +5354,7 @@ var fetchWeather = /*#__PURE__*/function () {
             currentLocation = _context.sent;
             condition = currentData.condition;
             _context.next = 16;
-            return _axios.default.get("http://api.weatherapi.com/v1/forecast.json?key=ac5bfa3ccccf4780806122315221405&q=".concat(loc, "&days=3&aqi=no&alerts=no"));
+            return _axios.default.get("https://api.weatherapi.com/v1/forecast.json?key=ac5bfa3ccccf4780806122315221405&q=".concat(loc, "&days=3&aqi=no&alerts=no"));
 
           case 16:
             responseForecast = _context.sent;
@@ -5440,7 +5440,7 @@ var fetchWeatherAutoComplete = /*#__PURE__*/function () {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return _axios.default.get("http://api.weatherapi.com/v1/search.json?key=ac5bfa3ccccf4780806122315221405&q=".concat(loc));
+            return _axios.default.get("https://api.weatherapi.com/v1/search.json?key=ac5bfa3ccccf4780806122315221405&q=".concat(loc));
 
           case 2:
             response = _context2.sent;
@@ -5544,7 +5544,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49913" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49313" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
