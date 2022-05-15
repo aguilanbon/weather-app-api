@@ -5328,25 +5328,26 @@ var fetchWeather = /*#__PURE__*/function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
+            _context.prev = 0;
+            _context.next = 3;
             return _axios.default.get("http://api.weatherapi.com/v1/current.json?key=ac5bfa3ccccf4780806122315221405&q=".concat(loc, "&aqi=no"));
 
-          case 2:
+          case 3:
             response = _context.sent;
-            _context.next = 5;
+            _context.next = 6;
             return response.data;
 
-          case 5:
+          case 6:
             data = _context.sent;
-            _context.next = 8;
+            _context.next = 9;
             return data.current;
 
-          case 8:
+          case 9:
             currentData = _context.sent;
-            _context.next = 11;
+            _context.next = 12;
             return data.location;
 
-          case 11:
+          case 12:
             currentLocation = _context.sent;
             condition = currentData.condition;
             console.log(currentData);
@@ -5357,13 +5358,30 @@ var fetchWeather = /*#__PURE__*/function () {
             document.getElementById('weather-icon').src = condition.icon;
             locationCity.innerHTML = "".concat(currentLocation.name, ",");
             locationCountry.innerHTML = currentLocation.country;
+            _context.next = 28;
+            break;
 
-          case 21:
+          case 24:
+            _context.prev = 24;
+            _context.t0 = _context["catch"](0);
+            console.log(_context.t0.response.status);
+
+            if (_context.t0.response.status) {
+              locationCity.innerHTML = "404";
+              locationCountry.innerHTML = "No location found...";
+              temp.innerHTML = '';
+              weatherCondition.innerText = '';
+              inText.classList.remove('visible');
+              inText.classList.add('hidden');
+              document.getElementById('weather-icon').src = '';
+            }
+
+          case 28:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee);
+    }, _callee, null, [[0, 24]]);
   }));
 
   return function fetchWeather(_x) {
