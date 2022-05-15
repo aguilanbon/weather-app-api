@@ -72,10 +72,27 @@ p, h1, h2, h3 {
   margin-top: 3em;
   width: 100%;
   z-index: 999;
+  background-color: white;
+  border-radius: .5em;
 }
 
 .container .weather-container .search-container .autocomplete-container ul {
-  background-color: aquamarine;
+  list-style-type: none;
+  padding-left: 1em;
+  -webkit-box-shadow: 0.3em 0.3em #a7a7a7;
+          box-shadow: 0.3em 0.3em #a7a7a7;
+  border-radius: .5em;
+}
+
+.container .weather-container .search-container .autocomplete-container ul li {
+  padding: .1em 0;
+  font-size: .9em;
+  opacity: .9;
+}
+
+.container .weather-container .search-container .autocomplete-container ul li:hover {
+  cursor: pointer;
+  color: #0275d8;
 }
 
 .container .weather-container .weather-input {

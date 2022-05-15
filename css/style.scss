@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans:wght@300;400;500&family=Poppins:wght@300;400;600&family=Roboto:wght@100;300;400&family=Source+Sans+Pro:wght@300;400&family=Ubuntu:wght@300;400;500&display=swap');
 
-$primary-color: blue;
+$primary-color: #0275d8;
 $base-font: 16px;
 
 * {
@@ -51,9 +51,25 @@ p, h1, h2, h3 {
                 margin-top: 3em;
                 width: 100%;
                 z-index: 999;
+                background-color: white;
+                border-radius: .5em;
 
                 ul {
-                    background-color: aquamarine;
+                    list-style-type: none;
+                    padding-left: 1em;
+                    box-shadow: .3em .3em rgb(167, 167, 167);
+                    border-radius: .5em;
+
+                    li {
+                        padding: .1em 0;
+                        font-size: .9em;
+                        opacity: .9;
+                    }
+
+                    li:hover {
+                        cursor: pointer;
+                        color: $primary-color;
+                    }
                 }
             }
 

@@ -5412,10 +5412,11 @@ var fetchWeatherAutoComplete = /*#__PURE__*/function () {
                 var li = document.createElement('li');
                 console.log(city);
                 var searchCity = document.createElement('p');
-                searchCity.innerText = city.name;
+                searchCity.innerText = "".concat(city.name);
                 li.appendChild(searchCity);
                 ul.appendChild(li);
                 ul.classList.add('visible');
+                console.log(city);
               }
             });
 
@@ -5463,6 +5464,9 @@ input.addEventListener('input', /*#__PURE__*/function () {
     return _ref3.apply(this, arguments);
   };
 }());
+document.querySelector('body').addEventListener('click', function () {
+  ul.innerHTML = "";
+});
 },{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","axios":"node_modules/axios/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

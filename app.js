@@ -10,6 +10,7 @@ const temp = document.getElementById('temp')
 const ul = document.querySelector('ul')
 const autocomplete = document.querySelector('.autocomplete-container')
 
+
 const locationCity = document.getElementById('weather-location__city')
 const locationCountry = document.getElementById('weather-location__country')
 //ac5bfa3ccccf4780806122315221405
@@ -58,10 +59,11 @@ const fetchWeatherAutoComplete = async (loc) => {
                 const li = document.createElement('li')
                 console.log(city);
                 const searchCity = document.createElement('p')
-                searchCity.innerText = city.name
+                searchCity.innerText = `${city.name}`
                 li.appendChild(searchCity)
                 ul.appendChild(li)
                 ul.classList.add('visible')
+                console.log(city);
             }
         }) 
 }
@@ -81,4 +83,8 @@ input.addEventListener('input', async (e) => {
     e.preventDefault()
     ul.innerHTML = ""
     await fetchWeatherAutoComplete(e.target.value)
+})
+
+document.querySelector('body').addEventListener('click', () => {
+    ul.innerHTML = ""
 })
