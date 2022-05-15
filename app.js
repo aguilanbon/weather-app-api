@@ -8,8 +8,10 @@ const inText = document.querySelector('.in')
 const weatherCondition = document.getElementById('weather-condition')
 const temp = document.getElementById('temp')
 const ul = document.querySelector('ul')
-const autocomplete = document.querySelector('.autocomplete-container')
 
+
+//forecast
+const tempForecast = document.querySelector('.weather-forecast')
 
 const locationCity = document.getElementById('weather-location__city')
 const locationCountry = document.getElementById('weather-location__country')
@@ -26,10 +28,44 @@ const fetchWeather = async (loc) => {
 
         let responseForecast = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=ac5bfa3ccccf4780806122315221405&q=${loc}&days=3&aqi=no&alerts=no`)
 
-        let forecastData = responseForecast.data.forecast.forecastday
+        let forecastData = await responseForecast.data.forecast.forecastday
+
+        tempForecast.innerHTML = ""
 
         forecastData.forEach(data => {
-            console.log(data);
+            let condition = data.day
+            console.log(data.date);
+
+                const tempContainer = document.createElement('div')
+                tempContainer.classList.add('temp-container__forecast')
+
+                const foreCastCondition = document.createElement('div')
+                foreCastCondition.classList.add('condition-container__forecast')
+
+                const forecastContainer = document.createElement('div')
+                forecastContainer.classList.add('forecast-container')
+
+                const dateContainer = document.createElement('div')
+                dateContainer.classList.add('date-container')
+
+                const h1 = document.createElement('h1')
+                    h1.innerHTML = `${condition.avgtemp_c}&#176`
+                    tempContainer.appendChild(h1)
+                    
+                const h3 = document.createElement('h3')
+                    h3.innerHTML = data.day.condition.text
+                    foreCastCondition.appendChild(h3)
+
+                const icon = document.createElement('img')
+                    icon.src = data.day.condition.icon
+                    foreCastCondition.appendChild(icon)
+
+                const forecastDate = document.createElement('p')
+                    forecastDate.innerHTML = data.date
+
+                forecastContainer.appendChild(tempContainer)
+                forecastContainer.appendChild(foreCastCondition)
+                tempForecast.appendChild(forecastContainer)
         })
 
             temp.innerHTML = `${currentData.temp_c}&#176`
@@ -41,10 +77,10 @@ const fetchWeather = async (loc) => {
 
             input.value = ''
             ul.innerHTML = ""
-
-            console.log(currentData);
+            
 
     } catch (error) {
+        console.log(error);
         if(error.response.status) {
             locationCity.innerHTML = "404"
             locationCountry.innerHTML = "No location found..."

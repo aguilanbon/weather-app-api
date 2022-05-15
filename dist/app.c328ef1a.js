@@ -5318,8 +5318,9 @@ var button = document.querySelector('button');
 var inText = document.querySelector('.in');
 var weatherCondition = document.getElementById('weather-condition');
 var temp = document.getElementById('temp');
-var ul = document.querySelector('ul');
-var autocomplete = document.querySelector('.autocomplete-container');
+var ul = document.querySelector('ul'); //forecast
+
+var tempForecast = document.querySelector('.weather-forecast');
 var locationCity = document.getElementById('weather-location__city');
 var locationCountry = document.getElementById('weather-location__country'); //ac5bfa3ccccf4780806122315221405
 
@@ -5357,9 +5358,37 @@ var fetchWeather = /*#__PURE__*/function () {
 
           case 16:
             responseForecast = _context.sent;
-            forecastData = responseForecast.data.forecast.forecastday;
+            _context.next = 19;
+            return responseForecast.data.forecast.forecastday;
+
+          case 19:
+            forecastData = _context.sent;
+            tempForecast.innerHTML = "";
             forecastData.forEach(function (data) {
-              console.log(data);
+              var condition = data.day;
+              console.log(data.date);
+              var tempContainer = document.createElement('div');
+              tempContainer.classList.add('temp-container__forecast');
+              var foreCastCondition = document.createElement('div');
+              foreCastCondition.classList.add('condition-container__forecast');
+              var forecastContainer = document.createElement('div');
+              forecastContainer.classList.add('forecast-container');
+              var dateContainer = document.createElement('div');
+              dateContainer.classList.add('date-container');
+              var h1 = document.createElement('h1');
+              h1.innerHTML = "".concat(condition.avgtemp_c, "&#176");
+              tempContainer.appendChild(h1);
+              var h3 = document.createElement('h3');
+              h3.innerHTML = data.day.condition.text;
+              foreCastCondition.appendChild(h3);
+              var icon = document.createElement('img');
+              icon.src = data.day.condition.icon;
+              foreCastCondition.appendChild(icon);
+              var forecastDate = document.createElement('p');
+              forecastDate.innerHTML = data.date;
+              forecastContainer.appendChild(tempContainer);
+              forecastContainer.appendChild(foreCastCondition);
+              tempForecast.appendChild(forecastContainer);
             });
             temp.innerHTML = "".concat(currentData.temp_c, "&#176");
             weatherCondition.innerText = condition.text;
@@ -5369,13 +5398,13 @@ var fetchWeather = /*#__PURE__*/function () {
             locationCountry.innerHTML = currentLocation.country;
             input.value = '';
             ul.innerHTML = "";
-            console.log(currentData);
-            _context.next = 33;
+            _context.next = 36;
             break;
 
-          case 30:
-            _context.prev = 30;
+          case 32:
+            _context.prev = 32;
             _context.t0 = _context["catch"](0);
+            console.log(_context.t0);
 
             if (_context.t0.response.status) {
               locationCity.innerHTML = "404";
@@ -5388,12 +5417,12 @@ var fetchWeather = /*#__PURE__*/function () {
               input.value = '';
             }
 
-          case 33:
+          case 36:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 30]]);
+    }, _callee, null, [[0, 32]]);
   }));
 
   return function fetchWeather(_x) {

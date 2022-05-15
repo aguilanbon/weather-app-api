@@ -119,13 +119,50 @@ p, h1, h2, h3 {
             }
 
             .in {
-                padding: 1em 0;
+                padding: 1em 0 0 0;
                 opacity: .6;
             }
 
             .location-container {
                 h3 {
                     opacity: .6;
+                }
+            }
+
+            .weather-forecast {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 3em;
+
+                .forecast-container {
+                    padding: 0 1em;
+                    display: flex;
+                    align-items: center;
+
+                    .temp-container__forecast {
+                        display: flex;
+                        h1 {
+                            font-size: 1.4em;
+                        }
+                    }
+
+                    .condition-container__forecast {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: flex-start;
+                    padding-left: 1em;
+
+                        h3 {
+                            font-size: .7em;
+                        }
+
+                        img {
+                            width: 2.5em;
+                        }
+                    }
+                    
                 }
             }
         }
@@ -138,4 +175,28 @@ p, h1, h2, h3 {
 
 .visible {
     display: block;
+}
+
+@media screen and (max-width: 480px) {
+    .weather-forecast {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .forecast-container {
+        margin: 1.5em 0;
+        min-width: 100%;
+    }
+
+    .temp-container__forecast {
+        min-width: 50%;
+        display: flex;
+        justify-content: center;
+    }
+
+    
+    .condition-container__forecast {
+        min-width: 50%;
+    }
 }
