@@ -5315,11 +5315,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var input = document.querySelector('input');
 var button = document.querySelector('button');
-var locationContainer = document.getElementById('location'); //ac5bfa3ccccf4780806122315221405
+var inText = document.querySelector('.in');
+var weatherCondition = document.getElementById('weather-condition');
+var temp = document.getElementById('temp');
+var locationCity = document.getElementById('weather-location__city');
+var locationCountry = document.getElementById('weather-location__country'); //ac5bfa3ccccf4780806122315221405
 
 var fetchWeather = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(loc) {
-    var response, data, currentData, currentLocation;
+    var response, data, currentData, currentLocation, condition;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -5344,11 +5348,17 @@ var fetchWeather = /*#__PURE__*/function () {
 
           case 11:
             currentLocation = _context.sent;
+            condition = currentData.condition;
             console.log(currentData);
             console.log(currentLocation);
-            locationContainer.innerHTML = currentLocation.name + ' ' + currentLocation.country;
+            temp.innerHTML = "".concat(currentData.temp_c, "&#176");
+            weatherCondition.innerText = condition.text;
+            inText.classList.add('visible');
+            document.getElementById('weather-icon').src = condition.icon;
+            locationCity.innerHTML = "".concat(currentLocation.name, ",");
+            locationCountry.innerHTML = currentLocation.country;
 
-          case 15:
+          case 21:
           case "end":
             return _context.stop();
         }
@@ -5361,9 +5371,45 @@ var fetchWeather = /*#__PURE__*/function () {
   };
 }();
 
+var fetchWeatherAutoComplete = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(loc) {
+    var response, data;
+    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return _axios.default.get("http://api.weatherapi.com/v1/search.json?key=ac5bfa3ccccf4780806122315221405&q=".concat(loc));
+
+          case 2:
+            response = _context2.sent;
+            _context2.next = 5;
+            return response.data;
+
+          case 5:
+            data = _context2.sent;
+            console.log(data);
+
+          case 7:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+
+  return function fetchWeatherAutoComplete(_x2) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
 button.addEventListener('click', function (e) {
   e.preventDefault();
   fetchWeather(input.value);
+});
+input.addEventListener('change', function (e) {
+  e.preventDefault();
+  fetchWeatherAutoComplete(e.target.value);
 });
 },{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","axios":"node_modules/axios/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -5393,7 +5439,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56762" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49913" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
