@@ -24,6 +24,14 @@ const fetchWeather = async (loc) => {
         let currentLocation = await data.location
         let condition = currentData.condition
 
+        let responseForecast = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=ac5bfa3ccccf4780806122315221405&q=${loc}&days=3&aqi=no&alerts=no`)
+
+        let forecastData = responseForecast.data.forecast.forecastday
+
+        forecastData.forEach(data => {
+            console.log(data);
+        })
+
             temp.innerHTML = `${currentData.temp_c}&#176`
             weatherCondition.innerText = condition.text
             inText.classList.add('visible')
@@ -33,6 +41,8 @@ const fetchWeather = async (loc) => {
 
             input.value = ''
             ul.innerHTML = ""
+
+            console.log(currentData);
 
     } catch (error) {
         if(error.response.status) {

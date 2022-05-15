@@ -5325,7 +5325,7 @@ var locationCountry = document.getElementById('weather-location__country'); //ac
 
 var fetchWeather = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(loc) {
-    var response, data, currentData, currentLocation, condition;
+    var response, data, currentData, currentLocation, condition, responseForecast, forecastData;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -5352,6 +5352,15 @@ var fetchWeather = /*#__PURE__*/function () {
           case 12:
             currentLocation = _context.sent;
             condition = currentData.condition;
+            _context.next = 16;
+            return _axios.default.get("http://api.weatherapi.com/v1/forecast.json?key=ac5bfa3ccccf4780806122315221405&q=".concat(loc, "&days=3&aqi=no&alerts=no"));
+
+          case 16:
+            responseForecast = _context.sent;
+            forecastData = responseForecast.data.forecast.forecastday;
+            forecastData.forEach(function (data) {
+              console.log(data);
+            });
             temp.innerHTML = "".concat(currentData.temp_c, "&#176");
             weatherCondition.innerText = condition.text;
             inText.classList.add('visible');
@@ -5360,11 +5369,12 @@ var fetchWeather = /*#__PURE__*/function () {
             locationCountry.innerHTML = currentLocation.country;
             input.value = '';
             ul.innerHTML = "";
-            _context.next = 27;
+            console.log(currentData);
+            _context.next = 33;
             break;
 
-          case 24:
-            _context.prev = 24;
+          case 30:
+            _context.prev = 30;
             _context.t0 = _context["catch"](0);
 
             if (_context.t0.response.status) {
@@ -5378,12 +5388,12 @@ var fetchWeather = /*#__PURE__*/function () {
               input.value = '';
             }
 
-          case 27:
+          case 33:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 24]]);
+    }, _callee, null, [[0, 30]]);
   }));
 
   return function fetchWeather(_x) {
