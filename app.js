@@ -32,6 +32,7 @@ const fetchWeather = async (loc) => {
             locationCountry.innerHTML = currentLocation.country
 
             input.value = ''
+            ul.innerHTML = ""
 
     } catch (error) {
         if(error.response.status) {
@@ -57,13 +58,16 @@ const fetchWeatherAutoComplete = async (loc) => {
     data.forEach(city => {
             if(ul.children.length <= 8) {
                 const li = document.createElement('li')
-                console.log(city);
                 const searchCity = document.createElement('p')
                 searchCity.innerText = `${city.name}`
                 li.appendChild(searchCity)
                 ul.appendChild(li)
                 ul.classList.add('visible')
-                console.log(city);
+                
+
+                li.addEventListener('click', () => {
+                    fetchWeather(city.name)
+                })
             }
         }) 
 }
@@ -85,6 +89,6 @@ input.addEventListener('input', async (e) => {
     await fetchWeatherAutoComplete(e.target.value)
 })
 
-document.querySelector('body').addEventListener('click', () => {
-    ul.innerHTML = ""
-})
+// document.querySelector('.container').addEventListener('click', () => {
+//     ul.innerHTML = ""
+// })

@@ -5359,11 +5359,12 @@ var fetchWeather = /*#__PURE__*/function () {
             locationCity.innerHTML = "".concat(currentLocation.name, ",");
             locationCountry.innerHTML = currentLocation.country;
             input.value = '';
-            _context.next = 26;
+            ul.innerHTML = "";
+            _context.next = 27;
             break;
 
-          case 23:
-            _context.prev = 23;
+          case 24:
+            _context.prev = 24;
             _context.t0 = _context["catch"](0);
 
             if (_context.t0.response.status) {
@@ -5377,12 +5378,12 @@ var fetchWeather = /*#__PURE__*/function () {
               input.value = '';
             }
 
-          case 26:
+          case 27:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 23]]);
+    }, _callee, null, [[0, 24]]);
   }));
 
   return function fetchWeather(_x) {
@@ -5410,13 +5411,14 @@ var fetchWeatherAutoComplete = /*#__PURE__*/function () {
             data.forEach(function (city) {
               if (ul.children.length <= 8) {
                 var li = document.createElement('li');
-                console.log(city);
                 var searchCity = document.createElement('p');
                 searchCity.innerText = "".concat(city.name);
                 li.appendChild(searchCity);
                 ul.appendChild(li);
                 ul.classList.add('visible');
-                console.log(city);
+                li.addEventListener('click', function () {
+                  fetchWeather(city.name);
+                });
               }
             });
 
@@ -5463,10 +5465,9 @@ input.addEventListener('input', /*#__PURE__*/function () {
   return function (_x3) {
     return _ref3.apply(this, arguments);
   };
-}());
-document.querySelector('body').addEventListener('click', function () {
-  ul.innerHTML = "";
-});
+}()); // document.querySelector('.container').addEventListener('click', () => {
+//     ul.innerHTML = ""
+// })
 },{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","axios":"node_modules/axios/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
