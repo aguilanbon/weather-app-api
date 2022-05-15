@@ -10,4 +10,3 @@
 # Ignore SASS config files
 .sass-cache
 /.cache/
-/dist/
