@@ -5366,7 +5366,6 @@ var fetchWeather = /*#__PURE__*/function () {
             tempForecast.innerHTML = "";
             forecastData.forEach(function (data) {
               var condition = data.day;
-              console.log(data.date);
               var tempContainer = document.createElement('div');
               tempContainer.classList.add('temp-container__forecast');
               var foreCastCondition = document.createElement('div');
@@ -5544,7 +5543,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49313" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52324" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

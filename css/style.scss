@@ -29,9 +29,10 @@ h3 {
     max-width: 60%;
     margin: 0 auto;
     flex-direction: column;
+    padding-bottom: 7em;
 
     .header {
-        margin-top: 8rem;
+        margin-top: 4rem;
 
         h1 {
             font-weight: 800;
@@ -216,5 +217,30 @@ h3 {
 
     .condition-container__forecast {
         min-width: 50%;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .container {
+        max-width: 90%;
+    }
+    .weather-container {
+        min-width: 100%;
+    }
+    .condition-container {
+        max-width: 90%;
+
+        .temp-container {
+            h1 {
+                font-size: 2rem;
+            }
+        }
+        .condition {
+            font-size: .7rem;
+
+            #weather-icon {
+                width: 5em;
+            }
+        }
     }
 }
