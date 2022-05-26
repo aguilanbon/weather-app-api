@@ -35,10 +35,11 @@ h3 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  padding-bottom: 7em;
 }
 
 .container .header {
-  margin-top: 8rem;
+  margin-top: 4rem;
 }
 
 .container .header h1 {
@@ -299,6 +300,27 @@ h3 {
   }
   .condition-container__forecast {
     min-width: 50%;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .container {
+    max-width: 90%;
+  }
+  .weather-container {
+    min-width: 100%;
+  }
+  .condition-container {
+    max-width: 90%;
+  }
+  .condition-container .temp-container h1 {
+    font-size: 2rem;
+  }
+  .condition-container .condition {
+    font-size: .7rem;
+  }
+  .condition-container .condition #weather-icon {
+    width: 5em;
   }
 }
 
